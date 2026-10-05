@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="hu">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,6 +17,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="manifest" href="site.webmanifest">
+    <meta name="theme-color" content="#05030d">
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -1242,6 +1243,25 @@
         fill: currentColor;
       }
 
+      /* Phones: the footer doesn't fit on one line, so the icons get their own row. */
+      @media (max-width: 520px) {
+        .site-footer {
+          flex-wrap: wrap;
+          gap: 7px 16px;
+          padding: 7px 12px;
+        }
+
+        .site-footer > span:first-child {
+          white-space: nowrap;
+        }
+
+        .socials {
+          order: -1;
+          width: 100%;
+          justify-content: center;
+        }
+      }
+
       @media (max-width: 700px) {
         .nav-toggle {
           display: block;
@@ -1366,18 +1386,18 @@
         <a class="brand" href="#releases" data-route="releases" aria-label="Nagz music home">
           <img src="logo.png" alt="Nagz music" width="778" height="260" decoding="async">
         </a>
-        <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">
+        <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
         </button>
         <div class="nav-links" id="nav-links">
-          <button class="nav-link is-active" type="button" data-route="releases">RELEASES</button>
-          <button class="nav-link" type="button" data-route="old-tunes">OLD TUNES</button>
-          <button class="nav-link" type="button" data-route="videos">VIDEOS</button>
-          <button class="nav-link" type="button" data-route="remixes">REMIXES</button>
-          <button class="nav-link" type="button" data-route="live-jams">LIVE JAMS</button>
-          <button class="nav-link" type="button" data-route="about-me">ABOUT ME</button>
+          <a class="nav-link is-active" href="#releases" data-route="releases">RELEASES</a>
+          <a class="nav-link" href="#old-tunes" data-route="old-tunes">OLD TUNES</a>
+          <a class="nav-link" href="#videos" data-route="videos">VIDEOS</a>
+          <a class="nav-link" href="#remixes" data-route="remixes">REMIXES</a>
+          <a class="nav-link" href="#live-jams" data-route="live-jams">LIVE JAMS</a>
+          <a class="nav-link" href="#about-me" data-route="about-me">ABOUT ME</a>
           <a class="nav-link" href="https://musiconpurpose.net/" target="_blank" rel="noreferrer">COMMISSIONS<span class="external-icon" aria-hidden="true">&#8599;</span></a>
         </div>
       </nav>
@@ -1396,6 +1416,12 @@
           <div class="stack release-grid" id="releases-lps-list"></div>
         </section>
 
+        <section class="release-section" aria-label="EPs" hidden>
+          <div class="release-divider" aria-hidden="true"></div>
+          <h2 class="release-section-title">EPs</h2>
+          <div class="stack release-grid" id="releases-eps-list"></div>
+        </section>
+
         <section class="release-section" aria-label="Singles">
           <div class="release-divider" aria-hidden="true"></div>
           <h2 class="release-section-title">Singles</h2>
@@ -1408,10 +1434,10 @@
             <span class="soundcloud-cta-mark" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M9.8 8.4c.3-.1.6-.1.9-.1 2.2 0 4.1 1.5 4.6 3.6.5-.2 1-.3 1.5-.3 2 0 3.7 1.7 3.7 3.7S18.8 19 16.8 19H9.9V8.4zm-1.4.8H7.1V19h1.3V9.2zm-2.5 1H4.7V19h1.2v-8.8zm-2.4 2H2.3V19h1.2v-6.8z"/></svg>
             </span>
-            <span class="soundcloud-cta-copy">
+            <div class="soundcloud-cta-copy">
               <h2>Looking for my under-the-radar tunes?</h2>
               <p>Check my SoundCloud!</p>
-            </span>
+            </div>
           </a>
         </div>
       </section>
@@ -1436,10 +1462,10 @@
           <span class="soundcloud-cta-mark" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M21.6 7.2s-.2-1.6-.9-2.3c-.9-.9-1.9-.9-2.3-1C15.2 3.6 12 3.6 12 3.6h0s-3.2 0-6.4.3c-.5.1-1.5.1-2.3 1-.7.7-.9 2.3-.9 2.3S2 9.1 2 11v1.8c0 1.9.4 3.8.4 3.8s.2 1.6.9 2.3c.9.9 2.1.9 2.6 1 1.9.2 6.1.3 6.1.3s3.2 0 6.4-.3c.5-.1 1.5-.1 2.3-1 .7-.7.9-2.3.9-2.3s.4-1.9.4-3.8V11c0-1.9-.4-3.8-.4-3.8zM10 15.4V8.8l6.2 3.3L10 15.4z"/></svg>
           </span>
-          <span class="soundcloud-cta-copy">
+          <div class="soundcloud-cta-copy">
             <h2>I got more videos</h2>
             <p>Check my official YouTube channel!</p>
-          </span>
+          </div>
         </a>
       </section>
 
@@ -1469,7 +1495,7 @@
             <p>I am Nagz, a friendly xennial from Budapest, HU</p>
             <p>I've been making music on the computer since 1996 and I don't seem to get bored of it. In the early days the demoscene accepted me as one of them, and as a method of payback, I made a metric f*ckton of chiptunes in FT2 because I found limitations sexy - plus I didn't have proper samples to begin with...</p>
             <p>In 2014 I became a member of Maniacs Of Noise, the same year as the release of my first music video called 'Told You So'. Fast forward 6 years, I happened to finish my first LP called 'Good' on my live streams, which I consider a huge success, knowing how inconsistent my stylistic choices can be.</p>
-	<p>I am still an avid user of Renoise and it doesn't seem to change any time soon.</p>
+            <p>I am still an avid user of Renoise and it doesn't seem to change any time soon.</p>
             <p>Please enjoy my stuff. This is far from everything I've ever made, but you deserve only the best, my boo!</p>
             <p class="about-contact">Got something to tell? <a href="#" data-contact-link data-user="nagzofficial" data-host="gmail" data-tld="com">Let me know!</a></p>
           </div>
@@ -1478,7 +1504,7 @@
     </main>
 
     <footer class="site-footer">
-      <span>&copy; nagz // 2026</span>
+      <span>&copy; nagz // <span data-year>2026</span></span>
       <span class="socials" aria-label="Social links">
         <a href="https://www.facebook.com/Nagzofficial" target="_blank" rel="noreferrer" aria-label="Facebook">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.2 8.1V6.4c0-.8.5-1 1-1h2.6V1.1L14.2 1c-4 0-5 2.5-5 4.9v2.2H6v4.8h3.2V23h5V12.9h3.4l.5-4.8h-3.9z"/></svg>
@@ -1516,7 +1542,7 @@
     </div>
 
     <script>
-      const plasma = document.querySelector("#plasma");
+      let plasma = document.querySelector("#plasma");
       const plasmaSize = { w: 0, h: 0 };
       const plasmaFrameDelay = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 900 : 50;
       const TAU = Math.PI * 2;
@@ -1630,6 +1656,7 @@
         let image = null;
 
         return function draw(now) {
+          if (!ctx) return;
           const w = plasmaSize.w;
           const h = plasmaSize.h;
           if (!image || image.width !== w || image.height !== h) {
@@ -1663,7 +1690,15 @@
         };
       }
 
-      const drawPlasmaFrame = createGlPlasma(plasma) || create2dPlasma(plasma);
+      let drawPlasmaFrame = createGlPlasma(plasma);
+      if (!drawPlasmaFrame) {
+        // A canvas that already handed out a WebGL context can't give a 2D one, so the CPU
+        // fallback gets a fresh canvas.
+        const freshCanvas = plasma.cloneNode(false);
+        plasma.replaceWith(freshCanvas);
+        plasma = freshCanvas;
+        drawPlasmaFrame = create2dPlasma(plasma);
+      }
 
       function resizePlasma() {
         const w = Math.max(160, Math.floor(window.innerWidth / 8));
@@ -1741,29 +1776,33 @@
       const videoModal = document.querySelector("#video-modal");
       const videoModalSlot = document.querySelector("#video-modal-slot");
 
+      // Release fields: title, year, type ("lp" | "ep" | "single"), genre, cover (file in cover/,
+      // with a matching .webp in cover/preview/), link (fanlink), video (optional YouTube URL).
+      // Track count and length are calculated from the Apple preview data below; add
+      // tracks: 3, length: "12:34" only for a release that has no Apple previews yet.
       const releases = [
-        ["I Spilled Uncooked Rice All Over My Kitchen Floor And I Am Not Emotionally Ready To Deal With It Yet", "2025", "Vaporjungle", "1", "2:53", "rice.jpg", "https://fanlink.tv/ngzisur", "https://www.youtube.com/watch?v=u-CXsSDyq6w"],
-        ["Bloody Hell", "2025", "space bossa nova", "1", "2:11", "bhell.jpg", "https://fanlink.tv/nagzbh"],
-        ["Xxxxxxxxxx", "2024", "IDM / Chillout", "1", "3:33", "xxxxx.jpg", "https://fanlink.tv/xxxxxxxxxx", "https://www.youtube.com/watch?v=G4_Glej6vYY"],
-        ["Rooftops", "2023", "amapiano", "1", "6:48", "rooftops.jpg", "https://fanlink.tv/nagzrooftops"],
-        ["Unlock Your True Potential By Doing Absolutely Nothing", "2023", "Chill out", "1", "4:18", "uytpbdan.jpg", "https://fanlink.tv/uytpbdan"],
-        ["Desert Snow", "2022", "UK Garage", "1", "6:05", "dsnow.jpg", "https://fanlink.tv/desertsnow"],
-        ["Sunday", "2022", "Chill-hop", "1", "3:12", "sunday.jpg", "https://fanlink.tv/ngzsndy"],
-        ["Soidawooy", "2021", "breakbeat", "2", "9:50", "soida.jpg", "https://fanlink.tv/sdwy"],
-        ["GOOD", "2020", "Electronic", "10", "33:54", "good.jpg", "https://fanlink.tv/good2020"],
-        ["Charley Horse (feat. KcG)", "2019", "illbient", "1", "6:51", "chorse.jpg", "https://fanlink.tv/chkcg"],
-        ["Propaganda", "2019", "rough kuduro", "1", "2:58", "prpgnd.jpg", "https://fanlink.tv/prpgnd"],
-        ["Alright Today", "2015", "chillwave", "1", "2:56", "atoday.jpg", "https://fanlink.tv/ngzat", "https://www.youtube.com/watch?v=6rwy7SM0xT8"],
-        ["Told You So / Venge", "2014", "electronic", "2", "7:06", "tys.jpg", "https://fanlink.tv/ngztys", "https://www.youtube.com/watch?v=2PnFVxc3zNI"],
-        ["Bror Dau", "2013", "dub techno", "2", "17:37", "bdau.jpg", "https://fanlink.tv/brdau", "https://www.youtube.com/watch?v=NjvAk9Sm7ME"],
-        ["Hringur", "2006", "illbient", "2", "10:08", "hringur.jpg", "https://fanlink.tv/hrngr"]
+        { title: "I Spilled Uncooked Rice All Over My Kitchen Floor And I Am Not Emotionally Ready To Deal With It Yet", year: "2025", type: "single", genre: "Vaporjungle", cover: "rice.jpg", link: "https://fanlink.tv/ngzisur", video: "https://www.youtube.com/watch?v=u-CXsSDyq6w" },
+        { title: "Bloody Hell", year: "2025", type: "single", genre: "space bossa nova", cover: "bhell.jpg", link: "https://fanlink.tv/nagzbh" },
+        { title: "Xxxxxxxxxx", year: "2024", type: "single", genre: "IDM / Chillout", cover: "xxxxx.jpg", link: "https://fanlink.tv/xxxxxxxxxx", video: "https://www.youtube.com/watch?v=G4_Glej6vYY" },
+        { title: "Rooftops", year: "2023", type: "single", genre: "amapiano", cover: "rooftops.jpg", link: "https://fanlink.tv/nagzrooftops" },
+        { title: "Unlock Your True Potential By Doing Absolutely Nothing", year: "2023", type: "single", genre: "Chill out", cover: "uytpbdan.jpg", link: "https://fanlink.tv/uytpbdan" },
+        { title: "Desert Snow", year: "2022", type: "single", genre: "UK Garage", cover: "dsnow.jpg", link: "https://fanlink.tv/desertsnow" },
+        { title: "Sunday", year: "2022", type: "single", genre: "Chill-hop", cover: "sunday.jpg", link: "https://fanlink.tv/ngzsndy" },
+        { title: "Soidawooy", year: "2021", type: "single", genre: "breakbeat", cover: "soida.jpg", link: "https://fanlink.tv/sdwy" },
+        { title: "GOOD", year: "2020", type: "lp", genre: "Electronic", cover: "good.jpg", link: "https://fanlink.tv/good2020" },
+        { title: "Charley Horse (feat. KcG)", year: "2019", type: "single", genre: "illbient", cover: "chorse.jpg", link: "https://fanlink.tv/chkcg" },
+        { title: "Propaganda", year: "2019", type: "single", genre: "rough kuduro", cover: "prpgnd.jpg", link: "https://fanlink.tv/prpgnd" },
+        { title: "Alright Today", year: "2015", type: "single", genre: "chillwave", cover: "atoday.jpg", link: "https://fanlink.tv/ngzat", video: "https://www.youtube.com/watch?v=6rwy7SM0xT8" },
+        { title: "Told You So / Venge", year: "2014", type: "single", genre: "electronic", cover: "tys.jpg", link: "https://fanlink.tv/ngztys", video: "https://www.youtube.com/watch?v=2PnFVxc3zNI" },
+        { title: "Bror Dau", year: "2013", type: "single", genre: "dub techno", cover: "bdau.jpg", link: "https://fanlink.tv/brdau", video: "https://www.youtube.com/watch?v=NjvAk9Sm7ME" },
+        { title: "Hringur", year: "2006", type: "single", genre: "illbient", cover: "hringur.jpg", link: "https://fanlink.tv/hrngr" }
       ];
 
       const oldTunes = [
-        ["Chips Don't Lie - old chiptune compilation 1/3", "", "chiptune", "30", "1:11:46", "cdlie.jpg", "https://fanlink.tv/ngzchp"],
-        ["Some Chips Lied Tho - old chiptune compilation 2/3", "", "chiptune", "30", "1:02:54", "somech.jpg", "https://fanlink.tv/ngzchprej"],
-        ["What Even Are Chips!? - old chiptune compilation 3/3", "", "chiptune", "30", "54:12", "whateven.jpg", "https://fanlink.tv/ngzchprejagain"],
-        ["50 Old Tunes From Past Decades", "", "various", "50", "2:46:11", "50past.jpg", "https://fanlink.tv/50oldtunes"]
+        { title: "Chips Don't Lie - old chiptune compilation 1/3", genre: "chiptune", cover: "cdlie.jpg", link: "https://fanlink.tv/ngzchp" },
+        { title: "Some Chips Lied Tho - old chiptune compilation 2/3", genre: "chiptune", cover: "somech.jpg", link: "https://fanlink.tv/ngzchprej" },
+        { title: "What Even Are Chips!? - old chiptune compilation 3/3", genre: "chiptune", cover: "whateven.jpg", link: "https://fanlink.tv/ngzchprejagain" },
+        { title: "50 Old Tunes From Past Decades", genre: "various", cover: "50past.jpg", link: "https://fanlink.tv/50oldtunes" }
       ];
 
       const videos = [
@@ -1786,9 +1825,9 @@
         ["Makunouchi Bento - Pine Quiz (Nagz Remix)", "2018", "experimental", "https://soundcloud.com/toma-carnagiu/makunouchi-bento-pine-quiz-remix-by-nagz"],
         ["Surfalone - Soul Machine (Nagz Remix)", "2017", "experimental", "https://soundcloud.com/selected-sounds/surfalone-soul-machine-nagz"],
         ["Zagar - Dream Of A Machine (Nagz Remix)", "2014", "experimental", "https://soundcloud.com/naaaaaagz/zagar-dream-of-a-machine-nagz-remix-2014"],
+        ["Para Halu - Sky City (Nagz Remix) EXCERPT", "2013", "psy-chill", "https://soundcloud.com/psyliferecords/para-halu-sky-city-nagz-remix"],
         ["Selfmademusic - Technicolor (Nagz Remix)", "2012", "chill out", "https://soundcloud.com/naaaaaagz/selfmademusic-technicolor-nagz"],
         ["Makunouchi Bento - Yuki Onna (Nagz Remix)", "2012", "experimental", "https://soundcloud.com/naaaaaagz/makunouchi-bento-yuki-onna"],
-        ["Para Halu - Sky City (Nagz Remix) EXCERPT", "2013", "psy-chill", "https://soundcloud.com/psyliferecords/para-halu-sky-city-nagz-remix"],
         ["Nagz - For The Better (Bassrack Wobama Remix)", "2012", "dubstep", "https://soundcloud.com/bassrackwobama/camomillemusic-com-nagz-for", "Yep, self-remix under different alias"],
         ["Haverek Közt - Mintha Szombat Volna (Pénzbedobós Remix by Nagz)", "2012", "chiptune pop", "https://soundcloud.com/naaaaaagz/haverek-k-zt-mintha-szombat"],
         ["Colorstar - Falling (Nagz Remix)", "2011", "chill out", "https://soundcloud.com/colorstar_falling/colorstar-falling-nagz-remix"],
@@ -1797,9 +1836,9 @@
       ];
 
       const liveJams = [
-        ["Nagz x ClySuva Dawless slow techno jam - 2021.09.11, Tallinn, Estonia", "https://www.youtube.com/watch?v=mfDwR2EfcLc", "video"],
+        ["Nagz x ClySuva DAWless slow techno jam - 2021.09.11, Tallinn, Estonia", "https://www.youtube.com/watch?v=mfDwR2EfcLc", "video"],
         ["Imagine Invits (Boom Shwatee Oosh, 2018)", "https://www.youtube.com/watch?v=XI29sO3qlcg", "video"],
-        ["Dawless jams playlist", "https://www.youtube.com/playlist?list=PL7rrc_swQYR87Znj-UAw444COTA-IY_cT", "playlist", "https://i.ytimg.com/vi/ki_n4Dwik-g/hqdefault.jpg"]
+        ["DAWless jams playlist", "https://www.youtube.com/playlist?list=PL7rrc_swQYR87Znj-UAw444COTA-IY_cT", "playlist", "https://i.ytimg.com/vi/ki_n4Dwik-g/hqdefault.jpg"]
       ];
 
       const serviceLinks = {
@@ -1818,7 +1857,7 @@
         "https://fanlink.tv/ngztys": { spotify: "https://open.spotify.com/album/05OYnJYup4815UbCzMuX17", apple: "https://music.apple.com/us/album/told-you-so-venge-single/1858425224?at=1001lbRT&ct=130767", youtubeMusic: "https://music.youtube.com/playlist?list=OLAK5uy_mdj-VuwoBaMyTdo9OYuwqMj8tBUxOuLBE", tidal: "https://tidal.com/album/478753003", bandcamp: "https://nagz.bandcamp.com/album/told-you-so-bw-venge" },
         "https://fanlink.tv/brdau": { spotify: "https://open.spotify.com/album/6hLc795z4cc6G8Nkf7JA9a", apple: "https://music.apple.com/us/album/bror-dau-single/1858434688?at=1001lbRT&ct=130765", youtubeMusic: "https://music.youtube.com/playlist?list=OLAK5uy_k_BqcD3DHz5XPRekt9cEgErW20Ai13EoQ", tidal: "https://tidal.com/album/478762132", bandcamp: "https://nagz.bandcamp.com/album/bror-dau" },
         "https://fanlink.tv/hrngr": { spotify: "https://open.spotify.com/album/1bIENEgnSbL3EbHgCmIEg9", apple: "https://music.apple.com/us/album/hringur-single/1858426415?at=1001lbRT&ct=133007", youtubeMusic: "https://music.youtube.com/playlist?list=OLAK5uy_mFfpqnMUIpUwseyiTha5sc36EP7W3l-7M", tidal: "https://tidal.com/album/478753767", bandcamp: "https://nagz.bandcamp.com/album/hringur" },
-        "https://fanlink.tv/ngzchp": { spotify: "https://open.spotify.com/album/0j7zNvEE8oODhzJxQD6oGU", apple: "https://music.apple.com/us/album/chips-dont-lie/1858932266?at=1001lbRT&ct=167216", youtubeMusic: "https://music.youtube.com/playlist?list=OLAK5uy_k7WHsT4dBrqK_v65ex6O6aTSG4QmRc17w", tidal: "https://tidal.com/album/479202029" },
+        "https://fanlink.tv/ngzchp": { spotify: "https://open.spotify.com/album/0j7zNvEE8oODhzJxQD6oGU", apple: "https://music.apple.com/us/album/chips-dont-lie/1858932266?at=1001lbRT&ct=167216", youtubeMusic: "https://music.youtube.com/playlist?list=OLAK5uy_k7WHsT4dBrqK_v65ex6O6aTSG4QmRc17w", tidal: "https://tidal.com/album/479202029", bandcamp: "https://nagz.bandcamp.com/album/chips-dont-lie" },
         "https://fanlink.tv/ngzchprej": { spotify: "https://open.spotify.com/album/6xXAu6iASxD9ZJrzNN16tX", apple: "https://music.apple.com/us/album/some-chips-lied-tho/1858913105?at=1001lbRT&ct=417418", youtubeMusic: "https://music.youtube.com/playlist?list=OLAK5uy_lmSWzrIrDW8gtbxdvPZpHhanlmXFAMz_A", tidal: "https://tidal.com/album/479188840", bandcamp: "https://nagz.bandcamp.com/album/some-chips-lied-tho" },
         "https://fanlink.tv/ngzchprejagain": { spotify: "https://open.spotify.com/album/582TFWl1D9NghXaVfd13a9", apple: "https://music.apple.com/us/album/what-even-are-chips/1858932856?at=1001lbRT&ct=3164958", youtubeMusic: "https://music.youtube.com/playlist?list=OLAK5uy_k6_yK3jPyZ-J8l3ofF1eXsf3XI3TMp1oo", tidal: "https://tidal.com/album/479202928", bandcamp: "https://nagz.bandcamp.com/album/what-even-are-chips" },
         "https://fanlink.tv/50oldtunes": { spotify: "https://open.spotify.com/album/4uOVdd32pzolvYb57qoIJD", apple: "https://music.apple.com/us/album/50-tunes-from-past-decades/1858446501?at=1001lbRT&ct=3398527", youtubeMusic: "https://music.youtube.com/playlist?list=OLAK5uy_m38YXKrIpJrc7I2Ea-X1OpudNdkguWKkg", tidal: "https://tidal.com/album/478775260", bandcamp: "https://nagz.bandcamp.com/album/50-tunes-from-past-decades" }
@@ -2927,9 +2966,10 @@
 
       function formatMillis(milliseconds) {
         const totalSeconds = Math.round((milliseconds || 0) / 1000);
-        const minutes = Math.floor(totalSeconds / 60);
+        const hours = Math.floor(totalSeconds / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
         const seconds = String(totalSeconds % 60).padStart(2, "0");
-        return `${minutes}:${seconds}`;
+        return hours ? `${hours}:${String(minutes).padStart(2, "0")}:${seconds}` : `${minutes}:${seconds}`;
       }
 
       function albumPlayerShell(collectionId, className = "") {
@@ -2948,15 +2988,18 @@
         `;
       }
 
-      function releaseCard(item, showYear = true) {
-        const [title, year, genre, tracks, length, cover, link, video] = item;
+      function releaseCard(item, showYear = true, eager = false) {
+        const { title, year, genre, cover, link, video } = item;
+        const directLinks = serviceLinks[link] || {};
+        const previewList = previewTracks[appleCollectionId(directLinks.apple)] || [];
+        const tracks = Number(item.tracks) || previewList.length;
+        const length = item.length || (previewList.length ? formatMillis(previewList.reduce((sum, track) => sum + (track.trackTimeMillis || 0), 0)) : "");
         const meta = [
           showYear && year ? year : null,
           genre,
-          tracks ? `${tracks} ${tracks === "1" ? "track" : "tracks"}` : null,
+          tracks ? `${tracks} ${tracks === 1 ? "track" : "tracks"}` : null,
           length
         ].filter(Boolean);
-        const directLinks = serviceLinks[link] || {};
         const coverPreview = cover.replace(/\.[^.]+$/, ".webp");
         const buttons = services.map((service) => {
           const href = directLinks[service.key];
@@ -2972,7 +3015,7 @@
             <a href="${link}" target="_blank" rel="noreferrer" aria-label="${escapeHtml(title)} fanlink">
               <picture class="cover-picture">
                 <source srcset="cover/preview/${coverPreview}" type="image/webp">
-                <img class="cover-art" src="cover/${cover}" alt="${escapeHtml(title)} cover art" width="500" height="500" loading="${title === "GOOD" ? "eager" : "lazy"}" decoding="async"${title === "GOOD" ? " fetchpriority=\"high\"" : ""}>
+                <img class="cover-art" src="cover/${cover}" alt="${escapeHtml(title)} cover art" width="500" height="500" loading="${eager ? "eager" : "lazy"}" decoding="async"${eager ? " fetchpriority=\"high\"" : ""}>
               </picture>
             </a>
             <div class="release-copy">
@@ -3063,10 +3106,19 @@
         `;
       }
 
-      const lpReleases = releases.filter((item) => item[0] === "GOOD");
-      const singleReleases = releases.filter((item) => item[0] !== "GOOD");
-      document.querySelector("#releases-lps-list").innerHTML = lpReleases.map((item) => releaseCard(item, true)).join("");
-      document.querySelector("#releases-singles-list").innerHTML = singleReleases.map((item) => releaseCard(item, true)).join("");
+      // Each section only shows up when it has at least one release; the very first cover on the
+      // page is loaded eagerly since it's the biggest thing visible on arrival.
+      let firstCover = true;
+      [["lp", "#releases-lps-list"], ["ep", "#releases-eps-list"], ["single", "#releases-singles-list"]].forEach(([type, selector]) => {
+        const list = document.querySelector(selector);
+        const items = releases.filter((item) => (item.type || "single") === type);
+        list.closest(".release-section").hidden = !items.length;
+        list.innerHTML = items.map((item) => {
+          const card = releaseCard(item, true, firstCover);
+          firstCover = false;
+          return card;
+        }).join("");
+      });
       document.querySelector("#old-tunes-list").innerHTML = oldTunes.map((item) => releaseCard(item, false)).join("");
       document.querySelector("#videos-list").innerHTML = videos.map(videoCard).join("");
       document.querySelector("#remixes-list").innerHTML = remixes.map(remixCard).join("");
@@ -3203,6 +3255,15 @@
         shell.innerHTML = `<iframe class="video-frame" title="${escapeHtml(title)}" src="https://www.youtube.com/embed/${id}?autoplay=1&controls=1&rel=0&modestbranding=1&playsinline=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="origin-when-cross-origin" allowfullscreen></iframe>`;
       }
 
+      let modalReturnFocus = null;
+
+      // While the video popup is open, everything behind it is unreachable by Tab / screen readers.
+      function setPageInert(isInert) {
+        document.querySelectorAll(".site-header, .shell, .site-footer, #plasma").forEach((element) => {
+          element.inert = isInert;
+        });
+      }
+
       function openVideoModal(url, title) {
         const id = youtubeId(url);
         if (!id || !videoModal || !videoModalSlot) return;
@@ -3210,15 +3271,23 @@
         stopPreviewPlayers();
         resetVideoShells();
         videoModalSlot.innerHTML = `<iframe class="video-modal-frame" title="${escapeHtml(title)}" src="https://www.youtube.com/embed/${id}?autoplay=1&controls=1&rel=0&modestbranding=1&playsinline=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="origin-when-cross-origin" allowfullscreen></iframe>`;
+        if (!videoModal.classList.contains("is-open")) modalReturnFocus = document.activeElement;
         videoModal.classList.add("is-open");
         videoModal.setAttribute("aria-hidden", "false");
+        setPageInert(true);
+        videoModal.querySelector("[data-video-modal-close]").focus();
       }
 
       function closeVideoModal() {
         if (!videoModal || !videoModalSlot) return;
+        const wasOpen = videoModal.classList.contains("is-open");
         videoModal.classList.remove("is-open");
         videoModal.setAttribute("aria-hidden", "true");
         videoModalSlot.innerHTML = "";
+        if (!wasOpen) return;
+        setPageInert(false);
+        if (modalReturnFocus && document.contains(modalReturnFocus)) modalReturnFocus.focus();
+        modalReturnFocus = null;
       }
 
       let soundCloudPlayers = [];
@@ -3314,19 +3383,47 @@
         });
       }
 
+      let soundCloudApi = null;
+
       function loadSoundCloudApi() {
-        const script = document.createElement("script");
-        script.src = "https://w.soundcloud.com/player/api.js";
-        document.head.appendChild(script);
+        if (!soundCloudApi) {
+          soundCloudApi = new Promise((resolve, reject) => {
+            if (window.SC && window.SC.Widget) {
+              resolve();
+              return;
+            }
+            const script = document.createElement("script");
+            script.src = "https://w.soundcloud.com/player/api.js";
+            script.onload = () => resolve();
+            script.onerror = () => {
+              soundCloudApi = null; // allow a retry on the next click
+              reject(new Error("SoundCloud API failed to load"));
+            };
+            document.head.appendChild(script);
+          });
+        }
+        return soundCloudApi;
       }
 
-      let soundCloudAssetsLoaded = false;
+      let soundCloudArtworkLoaded = false;
 
       function ensureSoundCloudAssets() {
-        if (soundCloudAssetsLoaded) return;
-        soundCloudAssetsLoaded = true;
-        hydrateSoundCloudArtwork();
-        loadSoundCloudApi();
+        if (!soundCloudArtworkLoaded) {
+          soundCloudArtworkLoaded = true;
+          hydrateSoundCloudArtwork();
+        }
+        return loadSoundCloudApi();
+      }
+
+      // Runs the action with the card's player as soon as the SoundCloud API is available, so a
+      // click made while the API is still downloading isn't lost.
+      function withSoundCloudPlayer(card, action) {
+        ensureSoundCloudAssets()
+          .then(() => {
+            const player = ensureSoundCloudPlayer(card);
+            if (player) action(player);
+          })
+          .catch(() => {});
       }
 
       document.addEventListener("click", (event) => {
@@ -3344,25 +3441,24 @@
 
         const soundCloudSeek = event.target.closest("[data-sc-card] .progress-track");
         if (soundCloudSeek) {
-          ensureSoundCloudAssets();
           const card = soundCloudSeek.closest("[data-sc-card]");
-          const player = ensureSoundCloudPlayer(card);
-          if (!player) return;
           const rect = soundCloudSeek.getBoundingClientRect();
           const ratio = Math.max(0, Math.min(1, (event.clientX - rect.left) / rect.width));
-          const seek = () => {
-            player.widget.getDuration((duration) => {
-              if (!duration) return;
-              player.widget.seekTo(duration * ratio);
-              card.querySelector(".progress-fill").style.width = `${ratio * 100}%`;
-            });
-          };
+          withSoundCloudPlayer(card, (player) => {
+            const seek = () => {
+              player.widget.getDuration((duration) => {
+                if (!duration) return;
+                player.widget.seekTo(duration * ratio);
+                card.querySelector(".progress-fill").style.width = `${ratio * 100}%`;
+              });
+            };
 
-          if (!player.ready) {
-            player.pendingSeek = seek;
-            return;
-          }
-          seek();
+            if (!player.ready) {
+              player.pendingSeek = seek;
+              return;
+            }
+            seek();
+          });
           return;
         }
 
@@ -3429,25 +3525,31 @@
 
         const soundCloudTrigger = event.target.closest("[data-sc-trigger]");
         if (!soundCloudTrigger) return;
-        ensureSoundCloudAssets();
         const card = soundCloudTrigger.closest("[data-sc-card]");
-        const player = ensureSoundCloudPlayer(card);
-        if (!player) return;
         stopPreviewPlayers();
-        if (!player.ready) {
-          player.pendingPlay = true;
-          return;
-        }
-        player.widget.isPaused((isPaused) => {
-          if (isPaused) {
-            stopPreviewPlayers();
-            player.widget.play();
-          } else {
-            player.widget.pause();
-            card.classList.remove("is-playing");
+        withSoundCloudPlayer(card, (player) => {
+          if (!player.ready) {
+            player.pendingPlay = true;
+            return;
           }
+          player.widget.isPaused((isPaused) => {
+            if (isPaused) {
+              stopPreviewPlayers();
+              player.widget.play();
+            } else {
+              player.widget.pause();
+              card.classList.remove("is-playing");
+            }
+          });
         });
       });
+
+      const routes = ["releases", "old-tunes", "videos", "remixes", "live-jams", "about-me"];
+
+      function routeFromHash() {
+        const route = location.hash.slice(1);
+        return routes.includes(route) ? route : "releases";
+      }
 
       function setRoute(route) {
         views.forEach((view) => {
@@ -3460,8 +3562,7 @@
 
         navMenu.classList.remove("is-open");
         navToggle.setAttribute("aria-expanded", "false");
-        history.replaceState(null, "", `#${route}`);
-        if (route === "remixes") ensureSoundCloudAssets();
+        if (route === "remixes") ensureSoundCloudAssets().catch(() => {});
         closeVideoModal();
         resetVideoShells();
         pauseSoundCloudWidgets();
@@ -3469,10 +3570,17 @@
         window.scrollTo({ top: 0, behavior: "auto" });
       }
 
+      // Menu items are plain #links: the browser updates the address (so Back/Forward and shared
+      // links work) and hashchange switches the view.
+      window.addEventListener("hashchange", () => setRoute(routeFromHash()));
+
       routeControls.forEach((control) => {
-        control.addEventListener("click", (event) => {
-          event.preventDefault();
-          setRoute(control.dataset.route);
+        control.addEventListener("click", () => {
+          // Clicking the tab you're already on doesn't fire hashchange; still close the mobile menu.
+          if (control.getAttribute("href") === location.hash) {
+            navMenu.classList.remove("is-open");
+            navToggle.setAttribute("aria-expanded", "false");
+          }
         });
       });
 
@@ -3510,14 +3618,23 @@
         contactLink.addEventListener("click", (event) => {
           event.preventDefault();
           const address = `${contactLink.dataset.user}@${contactLink.dataset.host}.${contactLink.dataset.tld}`;
-          copyText(address);
-          contactLink.setAttribute("title", `${address} copied`);
+          copyText(address).then(() => {
+            if (!contactLink.dataset.label) contactLink.dataset.label = contactLink.textContent;
+            contactLink.textContent = `${address} copied!`;
+            window.clearTimeout(contactLink.labelTimer);
+            contactLink.labelTimer = window.setTimeout(() => {
+              contactLink.textContent = contactLink.dataset.label;
+            }, 4000);
+          });
           window.location.href = `mailto:${address}`;
         });
       });
 
-      const initialRoute = location.hash.slice(1);
-      setRoute(["releases", "old-tunes", "videos", "remixes", "live-jams", "about-me"].includes(initialRoute) ? initialRoute : "releases");
+      document.querySelectorAll("[data-year]").forEach((element) => {
+        element.textContent = new Date().getFullYear();
+      });
+
+      setRoute(routeFromHash());
       hydratePreviewPlayers();
     </script>
   </body>

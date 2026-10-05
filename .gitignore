@@ -8,3 +8,6 @@
 # Local artwork source files
 /nsinsta.png
 /nsinsta.psd
+
+# Old local snapshot of the Apple preview data (the live copy is inside index.html)
+/.preview-data.json
